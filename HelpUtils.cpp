@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 #include <cmath>
@@ -13,7 +13,7 @@
 #include "HelpUtils.h"
 using namespace std;
 
-//Ввод текстовой информации
+//Р’РІРѕРґ С‚РµРєСЃС‚РѕРІРѕР№ РёРЅС„РѕСЂРјР°С†РёРё
 string InputInformation(string message)
 {
 	string a;
@@ -21,13 +21,13 @@ string InputInformation(string message)
 	getline(cin,a);
 	while(a == "")
 	{
-		cout << "Ошибка!!!!" << endl;
+		cout << "РћС€РёР±РєР°!!!!" << endl;
 		getline(cin, a);
 	}
 	return a;
 }
 
-//считывание строки из бинарного файла
+//СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂРѕРєРё РёР· Р±РёРЅР°СЂРЅРѕРіРѕ С„Р°Р№Р»Р°
 string StrFromBin(fstream *f) {
 	string result;
 	_int32 len;
@@ -43,7 +43,7 @@ string StrFromBin(fstream *f) {
 	return result;
 }
 
-//запись строки в бинарный файл
+//Р·Р°РїРёСЃСЊ СЃС‚СЂРѕРєРё РІ Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р»
 void StrToBin(fstream *f, string str) {
 	_int32 len = str.length() + 1;
 	f->write(reinterpret_cast<char*>(&len), sizeof(len));
@@ -55,13 +55,13 @@ void StrToBin(fstream *f, string str) {
 void PrintHeadStudents()
 {
 	cout << "---------------------------------------------------------------------------------" << endl;
-	cout << setw(1) << left << "|" << setw(10) << left << "Запись" << "|" << setw(10) << left << "Курс" << "|" << setw(10) << left << "Группа" << "|" << setw(20) << left << "Фамилия" << "|" << setw(25) << left << "Номер зачётки" << "|" <<endl;
+	cout << setw(1) << left << "|" << setw(10) << left << "Р—Р°РїРёСЃСЊ" << "|" << setw(10) << left << "РљСѓСЂСЃ" << "|" << setw(10) << left << "Р“СЂСѓРїРїР°" << "|" << setw(20) << left << "Р¤Р°РјРёР»РёСЏ" << "|" << setw(25) << left << "РќРѕРјРµСЂ Р·Р°С‡С‘С‚РєРё" << "|" <<endl;
 	cout << "---------------------------------------------------------------------------------" << endl;
 }
 
 void PrintHeadMarks()
 {
 	cout << "----------------------------------------------------------------------" <<endl;
-	cout << setw(1) << left << "|" << setw(10) << left <<"Запись" << "|" << setw(20) << left << "Дисциплина" << "|" << setw(36) << left << "Оценка" << "|" << endl;
+	cout << setw(1) << left << "|" << setw(10) << left <<"Р—Р°РїРёСЃСЊ" << "|" << setw(20) << left << "Р”РёСЃС†РёРїР»РёРЅР°" << "|" << setw(36) << left << "РћС†РµРЅРєР°" << "|" << endl;
 	cout << "----------------------------------------------------------------------" <<endl;
 }

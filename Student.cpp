@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <cstdio>
 #include <sstream>
 #include <cmath>
@@ -10,7 +10,7 @@
 #include "StudentSession.h"
 #include "Student.h"
 
-	//Конструктор по умолчанию
+	//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	Student::Student()
 	{
 		__int32 course = 1;
@@ -20,17 +20,17 @@
 		Task<StudentSession> marks;
 	}
 
-	//Изменение структуры Student
+	//РР·РјРµРЅРµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ Student
 	Student Student::ChangeStudent(Student &result)
 	{
-		if (InputNumber(0, 1, "Хотите поменять курс " + to_string(result.course) + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
-			result.course = InputNumber(1, 6, "Введите новый курс: ");
-		if (InputNumber(0, 1, "Хотите поменять группу " + result.group + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
-			result.group = InputInformation("Введите новую группу: ");
-		if (InputNumber(0, 1, "Хотите поменять фамилию " + result.surname + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
-			result.surname = InputInformation("Введите новую фамилию: ");
-		if (InputNumber(0, 1, "Хотите поменять номер зачётки " + result.numberRecordBook + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
-			result.numberRecordBook = InputInformation("Введите новый номер: ");
+		if (InputNumber(0, 1, "РҐРѕС‚РёС‚Рµ РїРѕРјРµРЅСЏС‚СЊ РєСѓСЂСЃ " + to_string(result.course) + " (0 - РЅРµС‚, 1 - РґР°)\nР’Р°С€ РІС‹Р±РѕСЂ: ") == 1)
+			result.course = InputNumber(1, 6, "Р’РІРµРґРёС‚Рµ РЅРѕРІС‹Р№ РєСѓСЂСЃ: ");
+		if (InputNumber(0, 1, "РҐРѕС‚РёС‚Рµ РїРѕРјРµРЅСЏС‚СЊ РіСЂСѓРїРїСѓ " + result.group + " (0 - РЅРµС‚, 1 - РґР°)\nР’Р°С€ РІС‹Р±РѕСЂ: ") == 1)
+			result.group = InputInformation("Р’РІРµРґРёС‚Рµ РЅРѕРІСѓСЋ РіСЂСѓРїРїСѓ: ");
+		if (InputNumber(0, 1, "РҐРѕС‚РёС‚Рµ РїРѕРјРµРЅСЏС‚СЊ С„Р°РјРёР»РёСЋ " + result.surname + " (0 - РЅРµС‚, 1 - РґР°)\nР’Р°С€ РІС‹Р±РѕСЂ: ") == 1)
+			result.surname = InputInformation("Р’РІРµРґРёС‚Рµ РЅРѕРІСѓСЋ С„Р°РјРёР»РёСЋ: ");
+		if (InputNumber(0, 1, "РҐРѕС‚РёС‚Рµ РїРѕРјРµРЅСЏС‚СЊ РЅРѕРјРµСЂ Р·Р°С‡С‘С‚РєРё " + result.numberRecordBook + " (0 - РЅРµС‚, 1 - РґР°)\nР’Р°С€ РІС‹Р±РѕСЂ: ") == 1)
+			result.numberRecordBook = InputInformation("Р’РІРµРґРёС‚Рµ РЅРѕРІС‹Р№ РЅРѕРјРµСЂ: ");
 
 		return result;
 	}
@@ -65,29 +65,29 @@ Student StudentFromFile(fstream *file, bool &ok) {
 	return st;
 }
 
-//Функция ввода структуры Student с консоли
+//Р¤СѓРЅРєС†РёСЏ РІРІРѕРґР° СЃС‚СЂСѓРєС‚СѓСЂС‹ Student СЃ РєРѕРЅСЃРѕР»Рё
 Student InputScreenStudent()
 {
 	Student st;
 
-	st.setcourse(InputNumber(1, 6, "Введите курс (1-6): "));
-	st.setgroup(InputInformation("Введите группу: "));
-	st.setsurname(InputInformation("Введите фамилию: "));
-	st.setnumberRecordBook(InputInformation("Введите номер зачётки: "));
+	st.setcourse(InputNumber(1, 6, "Р’РІРµРґРёС‚Рµ РєСѓСЂСЃ (1-6): "));
+	st.setgroup(InputInformation("Р’РІРµРґРёС‚Рµ РіСЂСѓРїРїСѓ: "));
+	st.setsurname(InputInformation("Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: "));
+	st.setnumberRecordBook(InputInformation("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°С‡С‘С‚РєРё: "));
 
 	return st;
 }
 
-//Функция вывода структуры Student на консоль
+//Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃС‚СЂСѓРєС‚СѓСЂС‹ Student РЅР° РєРѕРЅСЃРѕР»СЊ
 void OutputScreenStudent(Student st)
 {
 	cout << setw(1) << "|" << setw(10) << left << st.getcourse() << "|" << setw(10) << left << st.getgroup() << "|" << setw(20) << left << st.getsurname() << "|" << setw(25) << left << st.getnumberRecordBook() << "|";
 }
 
-//Перевод структуры Student в строку
+//РџРµСЂРµРІРѕРґ СЃС‚СЂСѓРєС‚СѓСЂС‹ Student РІ СЃС‚СЂРѕРєСѓ
 string ToString(Student st, __int32 i)
 {
-	string result = "Запись - " + to_string(i) + "\n" + "Курс: " + to_string(st.getcourse()) + "\n" + "Группа: " + st.getgroup() + "\n" + "Фамилия: " + st.getsurname() + "\n" + "Номер зачётки: " + st.getnumberRecordBook() + "\n";
+	string result = "Р—Р°РїРёСЃСЊ - " + to_string(i) + "\n" + "РљСѓСЂСЃ: " + to_string(st.getcourse()) + "\n" + "Р“СЂСѓРїРїР°: " + st.getgroup() + "\n" + "Р¤Р°РјРёР»РёСЏ: " + st.getsurname() + "\n" + "РќРѕРјРµСЂ Р·Р°С‡С‘С‚РєРё: " + st.getnumberRecordBook() + "\n";
 	return result;
 }
 
@@ -99,7 +99,7 @@ bool IsEqual(Student st1, Student st2)
 		(st1.getnumberRecordBook() == st2.getnumberRecordBook()));
 }
 
-//считывание структуры Student из строки
+//СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ Student РёР· СЃС‚СЂРѕРєРё
 Student ReadFromStringSudent(ifstream& input)
 {
 	Student result;
@@ -113,41 +113,41 @@ Student ReadFromStringSudent(ifstream& input)
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Курс: ";
+			string wrd = "РљСѓСЂСЃ: ";
 			result.setcourse(atoi(s.substr(wrd.length(), s.length()).c_str()));
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Группа: ";
+			string wrd = "Р“СЂСѓРїРїР°: ";
 			result.setgroup(s.substr(wrd.length(), s.length()));
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Фамилия: ";
+			string wrd = "Р¤Р°РјРёР»РёСЏ: ";
 			result.setsurname(s.substr(wrd.length(), s.length()));
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Номер зачётки: ";
+			string wrd = "РќРѕРјРµСЂ Р·Р°С‡С‘С‚РєРё: ";
 			result.setnumberRecordBook(s.substr(wrd.length(), s.length()));
 		}
 	}
 	catch (...)
 	{
-		cout << "Ошибка записи файла!" << endl;
+		cout << "РћС€РёР±РєР° Р·Р°РїРёСЃРё С„Р°Р№Р»Р°!" << endl;
 	}
 	return result;
 }
 
-/*Поиск равного элемента по выбранному критерию
-type_search - тип поиска:
-1 - по группе
-2 - по курсу
-3 - по номеру зачетной книжки
-4 - по фамилии*/
+/*РџРѕРёСЃРє СЂР°РІРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РїРѕ РІС‹Р±СЂР°РЅРЅРѕРјСѓ РєСЂРёС‚РµСЂРёСЋ
+type_search - С‚РёРї РїРѕРёСЃРєР°:
+1 - РїРѕ РіСЂСѓРїРїРµ
+2 - РїРѕ РєСѓСЂСЃСѓ
+3 - РїРѕ РЅРѕРјРµСЂСѓ Р·Р°С‡РµС‚РЅРѕР№ РєРЅРёР¶РєРё
+4 - РїРѕ С„Р°РјРёР»РёРё*/
 bool SearchElement(Student a, Student b, __int32 type_search)
 {
 	switch (type_search)
@@ -165,40 +165,40 @@ bool SearchElement(Student a, Student b, __int32 type_search)
 	}
 }
 
-/*Ввод критерия поиска в зависимости от выбранного типа
-type_search - тип поиска:
-1 - по номеру группы
-2 - по номеру курса
-3 - по номеру зачетки
-4 - по фамилии*/
+/*Р’РІРѕРґ РєСЂРёС‚РµСЂРёСЏ РїРѕРёСЃРєР° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РІС‹Р±СЂР°РЅРЅРѕРіРѕ С‚РёРїР°
+type_search - С‚РёРї РїРѕРёСЃРєР°:
+1 - РїРѕ РЅРѕРјРµСЂСѓ РіСЂСѓРїРїС‹
+2 - РїРѕ РЅРѕРјРµСЂСѓ РєСѓСЂСЃР°
+3 - РїРѕ РЅРѕРјРµСЂСѓ Р·Р°С‡РµС‚РєРё
+4 - РїРѕ С„Р°РјРёР»РёРё*/
 Student InputChangeTypeSearchStudent(__int32 type_search)
 {
 	Student result;
 	switch (type_search)
 	{
 	case 1:
-		result.setgroup(InputInformation("Введите группу: "));
+		result.setgroup(InputInformation("Р’РІРµРґРёС‚Рµ РіСЂСѓРїРїСѓ: "));
 		return result;
 	case 2:
-		result.setcourse(InputNumber(1, 6, "Введите курс: "));
+		result.setcourse(InputNumber(1, 6, "Р’РІРµРґРёС‚Рµ РєСѓСЂСЃ: "));
 		return result;
 	case 3:
-		result.setnumberRecordBook(InputInformation("Введите номер зачётки: "));
+		result.setnumberRecordBook(InputInformation("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°С‡С‘С‚РєРё: "));
 		return result;
 	case 4:
-		result.setsurname(InputInformation("Введите фамилию: "));
+		result.setsurname(InputInformation("Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: "));
 		return result;
 	default:
 		return result;
 	}
 }
 
-/*Сравнение структур по выбранного полю
-type_search - тип поиска:
-1 - по номеру группы
-2 - по номеру курса
-3 - по номеру зачетки
-4 - по фамилии*/
+/*РЎСЂР°РІРЅРµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂ РїРѕ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РїРѕР»СЋ
+type_search - С‚РёРї РїРѕРёСЃРєР°:
+1 - РїРѕ РЅРѕРјРµСЂСѓ РіСЂСѓРїРїС‹
+2 - РїРѕ РЅРѕРјРµСЂСѓ РєСѓСЂСЃР°
+3 - РїРѕ РЅРѕРјРµСЂСѓ Р·Р°С‡РµС‚РєРё
+4 - РїРѕ С„Р°РјРёР»РёРё*/
 __int32 Sorte(Student a, Student b, __int32 type_search)
 {
 	switch (type_search)

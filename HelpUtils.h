@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 #include <cmath>
@@ -13,7 +13,7 @@
 using namespace std;
 
 template <class Type>
-//Вспомогательная функция для ввода числа в указанном интервале
+//Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РІРІРѕРґР° С‡РёСЃР»Р° РІ СѓРєР°Р·Р°РЅРЅРѕРј РёРЅС‚РµСЂРІР°Р»Рµ
 Type InputNumber(Type min, Type max, string message)
 {
 	Type n;
@@ -22,8 +22,8 @@ Type InputNumber(Type min, Type max, string message)
 		cout << message;
 		while ((!(cin >> n)) || cin.get() != '\n')
 		{
-			cin.clear();  // восстанавливает поток если он в ошибочном сосотянии
-			cin.sync();   // очищает поток от имеющихся символов
+			cin.clear();  // РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РїРѕС‚РѕРє РµСЃР»Рё РѕРЅ РІ РѕС€РёР±РѕС‡РЅРѕРј СЃРѕСЃРѕС‚СЏРЅРёРё
+			cin.sync();   // РѕС‡РёС‰Р°РµС‚ РїРѕС‚РѕРє РѕС‚ РёРјРµСЋС‰РёС…СЃСЏ СЃРёРјРІРѕР»РѕРІ
 			cout << message;
 			cin.ignore(100, '\n');
 		} 
@@ -31,16 +31,16 @@ Type InputNumber(Type min, Type max, string message)
 	return n;
 }
 
-//Ввод текстовой информации
+//Р’РІРѕРґ С‚РµРєСЃС‚РѕРІРѕР№ РёРЅС„РѕСЂРјР°С†РёРё
 string InputInformation(string message);
 
-//считывание строки из бинарного файла
+//СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂРѕРєРё РёР· Р±РёРЅР°СЂРЅРѕРіРѕ С„Р°Р№Р»Р°
 string StrFromBin(fstream *f);
 
-//запись строки в бинарный файл
+//Р·Р°РїРёСЃСЊ СЃС‚СЂРѕРєРё РІ Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р»
 void StrToBin(fstream *f, string str);
 
-//вывод в таблицу
+//РІС‹РІРѕРґ РІ С‚Р°Р±Р»РёС†Сѓ
 
 void PrintHeadStudents();
 

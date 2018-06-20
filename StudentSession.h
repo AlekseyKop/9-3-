@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <cstdio>
 #include <sstream>
 #include <cmath>
@@ -12,13 +12,13 @@ public:
 	string subject;
 	__int32 mark;
 
-	//Конструктор по умолчанию
+	//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	StudentSession();
 
-	//Изменение структуры Student
+	//РР·РјРµРЅРµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ Student
 	StudentSession ChangeStudentSession(StudentSession &result);
 
-	//Перегруженный оператор присваивания для структуры Student
+	//РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ РґР»СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ Student
 	StudentSession& operator = (StudentSession s);
 
 	void StudentSessionToFile(fstream *file);
@@ -26,16 +26,16 @@ public:
 
 StudentSession StudentSessionFromFile(fstream *file, bool &ok);
 
-//Функция ввода структуры Student с консоли
+//Р¤СѓРЅРєС†РёСЏ РІРІРѕРґР° СЃС‚СЂСѓРєС‚СѓСЂС‹ Student СЃ РєРѕРЅСЃРѕР»Рё
 StudentSession InputScreenStudentSession();
 
-//Функция вывода структуры Student на консоль
+//Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃС‚СЂСѓРєС‚СѓСЂС‹ Student РЅР° РєРѕРЅСЃРѕР»СЊ
 void OutputScreenStudentSession(StudentSession st);
 
-//Перевод структуры Student в строку
+//РџРµСЂРµРІРѕРґ СЃС‚СЂСѓРєС‚СѓСЂС‹ Student РІ СЃС‚СЂРѕРєСѓ
 string ToString(StudentSession st, __int32 i);
 
 bool IsEqual(StudentSession st1, StudentSession st2);
 
-//считывание структуры Student из строки
+//СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ Student РёР· СЃС‚СЂРѕРєРё
 StudentSession ReadFromString(ifstream& input);

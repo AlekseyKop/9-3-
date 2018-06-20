@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <cstdio>
 #include <sstream>
 #include <cmath>
@@ -9,25 +9,25 @@
 #include "StudentSession.h"
 
 
-	//Конструктор по умолчанию
+	//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	StudentSession::StudentSession()
 	{
 		string subject = "";
 		__int32 mark = 2;
 	}
 
-	//Изменение структуры Student
+	//РР·РјРµРЅРµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ Student
 	StudentSession StudentSession::ChangeStudentSession(StudentSession &result)
 	{
-		if (InputNumber(0, 1, "Хотите ли вы изменить предмет " + result.subject + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
-			result.subject = InputInformation("Введите предмет: ");
-		if (InputNumber(0, 1, "Хотите ли вы изменить оценку " + to_string(result.mark) + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
-			result.mark = InputNumber(2,5,"Введите оценку: ");
+		if (InputNumber(0, 1, "РҐРѕС‚РёС‚Рµ Р»Рё РІС‹ РёР·РјРµРЅРёС‚СЊ РїСЂРµРґРјРµС‚ " + result.subject + " (0 - РЅРµС‚, 1 - РґР°)\nР’Р°С€ РІС‹Р±РѕСЂ: ") == 1)
+			result.subject = InputInformation("Р’РІРµРґРёС‚Рµ РїСЂРµРґРјРµС‚: ");
+		if (InputNumber(0, 1, "РҐРѕС‚РёС‚Рµ Р»Рё РІС‹ РёР·РјРµРЅРёС‚СЊ РѕС†РµРЅРєСѓ " + to_string(result.mark) + " (0 - РЅРµС‚, 1 - РґР°)\nР’Р°С€ РІС‹Р±РѕСЂ: ") == 1)
+			result.mark = InputNumber(2,5,"Р’РІРµРґРёС‚Рµ РѕС†РµРЅРєСѓ: ");
 
 		return result;
 	}
 
-	//Перегруженный оператор присваивания для структуры Student
+	//РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ РґР»СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ Student
 	StudentSession& StudentSession::operator = (StudentSession s)
 	{
 		subject = s.subject;
@@ -49,28 +49,28 @@ StudentSession StudentSessionFromFile(fstream *file, bool &ok) {
 	return st_ex;
 }
 
-//Функция ввода структуры Student с консоли
+//Р¤СѓРЅРєС†РёСЏ РІРІРѕРґР° СЃС‚СЂСѓРєС‚СѓСЂС‹ Student СЃ РєРѕРЅСЃРѕР»Рё
 StudentSession InputScreenStudentSession()
 {
 	StudentSession s;
 
-	s.subject = InputInformation("Введите название дисциплины: ");
-	s.mark = InputNumber(2,5,"Введите оценку (2-5): ");
+	s.subject = InputInformation("Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РґРёСЃС†РёРїР»РёРЅС‹: ");
+	s.mark = InputNumber(2,5,"Р’РІРµРґРёС‚Рµ РѕС†РµРЅРєСѓ (2-5): ");
 
 	return s;
 }
 
-//Функция вывода структуры Student на консоль
+//Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃС‚СЂСѓРєС‚СѓСЂС‹ Student РЅР° РєРѕРЅСЃРѕР»СЊ
 void OutputScreenStudentSession(StudentSession st)
 {
 	
 	cout << setw(1) << left << "|" << setw(20) << left << st.subject << "|" << setw(36) << left << st.mark << "|";
 }
 //cout << setw(1) << "|" << setw(10) << left << st.course << "|" << setw(10) << left << st.group << "|" << setw(20) << left << st.surname << "|" << setw(25) << left << st.numberRecordBook << "|";
-//Перевод структуры Student в строку
+//РџРµСЂРµРІРѕРґ СЃС‚СЂСѓРєС‚СѓСЂС‹ Student РІ СЃС‚СЂРѕРєСѓ
 string ToString(StudentSession st, __int32 i)
 {
-	string result = "Запись - " + to_string(i) + "\n" + "Предмет: " + st.subject + "\n" + "Оценка: " + to_string(st.mark) + "\n";
+	string result = "Р—Р°РїРёСЃСЊ - " + to_string(i) + "\n" + "РџСЂРµРґРјРµС‚: " + st.subject + "\n" + "РћС†РµРЅРєР°: " + to_string(st.mark) + "\n";
 	return result;
 }
 
@@ -81,7 +81,7 @@ bool IsEqual(StudentSession st1, StudentSession st2)
 		(st1.mark == st2.mark));
 }
 
-//считывание структуры Student из строки
+//СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ Student РёР· СЃС‚СЂРѕРєРё
 StudentSession ReadFromString(ifstream& input)
 {
 	StudentSession result;
@@ -91,19 +91,19 @@ StudentSession ReadFromString(ifstream& input)
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Дисциплина: ";
+			string wrd = "Р”РёСЃС†РёРїР»РёРЅР°: ";
 			result.subject = s.substr(wrd.length(), s.length());
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Оценка: ";
+			string wrd = "РћС†РµРЅРєР°: ";
 			result.mark = atoi(s.substr(wrd.length(), s.length()).c_str());
 		}
 	}
 	catch (...)
 	{
-		cout << "Ошибка записи в файл" << endl;
+		cout << "РћС€РёР±РєР° Р·Р°РїРёСЃРё РІ С„Р°Р№Р»" << endl;
 	}
 	return result;
 }

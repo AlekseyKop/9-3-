@@ -1,6 +1,6 @@
-/*
-Реализовать справочник деканата. Реализовать управление списком студентов (поступление, обновление данных и отчисление).
-Предусмотреть вывод результатов сессии с группировкой по заданному критерию (например, курс, группа, дисциплина и т.п.).
+п»ї/*
+Р РµР°Р»РёР·РѕРІР°С‚СЊ СЃРїСЂР°РІРѕС‡РЅРёРє РґРµРєР°РЅР°С‚Р°. Р РµР°Р»РёР·РѕРІР°С‚СЊ СѓРїСЂР°РІР»РµРЅРёРµ СЃРїРёСЃРєРѕРј СЃС‚СѓРґРµРЅС‚РѕРІ (РїРѕСЃС‚СѓРїР»РµРЅРёРµ, РѕР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… Рё РѕС‚С‡РёСЃР»РµРЅРёРµ).
+РџСЂРµРґСѓСЃРјРѕС‚СЂРµС‚СЊ РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ СЃРµСЃСЃРёРё СЃ РіСЂСѓРїРїРёСЂРѕРІРєРѕР№ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РєСЂРёС‚РµСЂРёСЋ (РЅР°РїСЂРёРјРµСЂ, РєСѓСЂСЃ, РіСЂСѓРїРїР°, РґРёСЃС†РёРїР»РёРЅР° Рё С‚.Рї.).
 */
 #include <cstdio>
 #include <cmath>
@@ -21,7 +21,7 @@ void SaveStudentsToFile(string fileName, Task<Student> students) {
 	fstream file;
 	file.open(fileName, ios::out | ios::binary);
 	if (!file.is_open())
-		throw "Файл не удалось открыть";
+		throw "Р¤Р°Р№Р» РЅРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ";
 	__int32 i;
 	for (i = 0; i < students.size(); ++i) {
 		students.GetVector()[i].StudentToFile(&file);
@@ -33,7 +33,7 @@ void SaveStudentMarksToFile(string fileName, Student student) {
 	fstream file;
 	file.open(fileName, ios::out | ios::binary);
 	if (!file.is_open())
-		throw "Файл не удалось открыть";
+		throw "Р¤Р°Р№Р» РЅРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ";
 
 	student.StudentToFile(&file);
 	for (__int32 i = 0; i < student.getmarks().size(); ++i) {
@@ -62,7 +62,7 @@ void LoadStudentMarksFromFile(string fileName, Task<Student> &students) {
 	fstream file;
 	file.open(fileName, ios::binary | ios::in);
 	if (!file.is_open())
-		throw "Файл не удалось открыть";
+		throw "Р¤Р°Р№Р» РЅРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ";
 
 	Student st;
 	bool ok;
@@ -105,11 +105,11 @@ void main()
 		LoadStudentMarksFromFile("Student" + to_string(i) + ".dat", students);
 	}
 
-	cout << "Вход в Журнал университета: " << endl;
-	cout << "1 - Студент" << endl;
-	cout << "2 - Декан" << endl;
-	cout << "0 - Выход" << endl << endl;
-	__int32 mode = InputNumber(0, 2, "Ваш выбор: ");
+	cout << "Р’С…РѕРґ РІ Р–СѓСЂРЅР°Р» СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р°: " << endl;
+	cout << "1 - РЎС‚СѓРґРµРЅС‚" << endl;
+	cout << "2 - Р”РµРєР°РЅ" << endl;
+	cout << "0 - Р’С‹С…РѕРґ" << endl << endl;
+	__int32 mode = InputNumber(0, 2, "Р’Р°С€ РІС‹Р±РѕСЂ: ");
 	switch (mode)
 	{
 	case 1:
@@ -119,7 +119,7 @@ void main()
 		__int32 i;
 		do
 		{
-			numbRecBook = InputInformation("Введите номер зачётки(если не помните, пишите - 'DR'): ");
+			numbRecBook = InputInformation("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°С‡С‘С‚РєРё(РµСЃР»Рё РЅРµ РїРѕРјРЅРёС‚Рµ, РїРёС€РёС‚Рµ - 'DR'): ");
 			if (numbRecBook == "DR")
 			{
 				exit(0);
@@ -138,10 +138,10 @@ void main()
 		while (1)
 		{
 			cout << endl;
-			cout << "1 - Посмотреть свои оценки" << endl;
-			cout << "2 - Посчитать среднюю успеваемость" << endl;
-			cout << "0 - Выход" << endl;
-			__int32 changemenu = InputNumber(0, 2, "Ваш выбор: ");
+			cout << "1 - РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЃРІРѕРё РѕС†РµРЅРєРё" << endl;
+			cout << "2 - РџРѕСЃС‡РёС‚Р°С‚СЊ СЃСЂРµРґРЅСЋСЋ СѓСЃРїРµРІР°РµРјРѕСЃС‚СЊ" << endl;
+			cout << "0 - Р’С‹С…РѕРґ" << endl;
+			__int32 changemenu = InputNumber(0, 2, "Р’Р°С€ РІС‹Р±РѕСЂ: ");
 
 			switch (changemenu)
 			{
@@ -155,15 +155,15 @@ void main()
 			{
 				double Average = AverageScope(students.GetVector()[i]);
 
-				cout << "Ваш средний балл: " << Average << endl;
+				cout << "Р’Р°С€ СЃСЂРµРґРЅРёР№ Р±Р°Р»Р»: " << Average << endl;
 				if (Average == 5)
-					cout << "Уроки делай,а гулять не забывай! A то совсем перетрудился." << endl;
+					cout << "РЈСЂРѕРєРё РґРµР»Р°Р№,Р° РіСѓР»СЏС‚СЊ РЅРµ Р·Р°Р±С‹РІР°Р№! A С‚Рѕ СЃРѕРІСЃРµРј РїРµСЂРµС‚СЂСѓРґРёР»СЃСЏ." << endl;
 				if ((Average > 4)&&(Average != 5))
-					cout << "Вы учитесь хорошо,но можно и лучше" << endl;
+					cout << "Р’С‹ СѓС‡РёС‚РµСЃСЊ С…РѕСЂРѕС€Рѕ,РЅРѕ РјРѕР¶РЅРѕ Рё Р»СѓС‡С€Рµ" << endl;
 				if ((Average <= 4)&&(Average > 3.5))
-					cout << "Даже девчонки лучше тебя учатся!" << endl;
+					cout << "Р”Р°Р¶Рµ РґРµРІС‡РѕРЅРєРё Р»СѓС‡С€Рµ С‚РµР±СЏ СѓС‡Р°С‚СЃСЏ!" << endl;
 				if (Average <= 3.5)
-					cout << "Считай тебя уже отчислили" << endl;
+					cout << "РЎС‡РёС‚Р°Р№ С‚РµР±СЏ СѓР¶Рµ РѕС‚С‡РёСЃР»РёР»Рё" << endl;
 
 				break;
 			}
@@ -181,13 +181,13 @@ void main()
 		while (1)
 		{
 			cout << endl;
-			cout << "1 - Зачислить абитуриента" << endl;
-			cout << "2 - Изменить данные о студенте" << endl;
-			cout << "3 - Отчислить студента" << endl;
-			cout << "4 - Показать результаты сессии" << endl;
-			cout << "5 - Вывести список студентов" << endl;
-			cout << "0 - Выход" << endl << endl;
-			__int32 changemenu = InputNumber(0, 5, "Ваш выбор: ");
+			cout << "1 - Р—Р°С‡РёСЃР»РёС‚СЊ Р°Р±РёС‚СѓСЂРёРµРЅС‚Р°" << endl;
+			cout << "2 - РР·РјРµРЅРёС‚СЊ РґР°РЅРЅС‹Рµ Рѕ СЃС‚СѓРґРµРЅС‚Рµ" << endl;
+			cout << "3 - РћС‚С‡РёСЃР»РёС‚СЊ СЃС‚СѓРґРµРЅС‚Р°" << endl;
+			cout << "4 - РџРѕРєР°Р·Р°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹ СЃРµСЃСЃРёРё" << endl;
+			cout << "5 - Р’С‹РІРµСЃС‚Рё СЃРїРёСЃРѕРє СЃС‚СѓРґРµРЅС‚РѕРІ" << endl;
+			cout << "0 - Р’С‹С…РѕРґ" << endl << endl;
+			__int32 changemenu = InputNumber(0, 5, "Р’Р°С€ РІС‹Р±РѕСЂ: ");
 
 			switch (changemenu)
 			{
@@ -198,12 +198,12 @@ void main()
 			}
 			case 2:
 			{
-				cout << "1 - Изменить личные данные о студенте" << endl;
-				cout << "2 - Проставить оценку студенту" << endl;
-				cout << "3 - Исправить оценку студенту" << endl;
-				cout << "4 - Убрать оценку студента" << endl;
-				cout << "0 - Назад" << endl << endl;
-				__int32 a = InputNumber(0, 4, "Ваш выбор: ");
+				cout << "1 - РР·РјРµРЅРёС‚СЊ Р»РёС‡РЅС‹Рµ РґР°РЅРЅС‹Рµ Рѕ СЃС‚СѓРґРµРЅС‚Рµ" << endl;
+				cout << "2 - РџСЂРѕСЃС‚Р°РІРёС‚СЊ РѕС†РµРЅРєСѓ СЃС‚СѓРґРµРЅС‚Сѓ" << endl;
+				cout << "3 - РСЃРїСЂР°РІРёС‚СЊ РѕС†РµРЅРєСѓ СЃС‚СѓРґРµРЅС‚Сѓ" << endl;
+				cout << "4 - РЈР±СЂР°С‚СЊ РѕС†РµРЅРєСѓ СЃС‚СѓРґРµРЅС‚Р°" << endl;
+				cout << "0 - РќР°Р·Р°Рґ" << endl << endl;
+				__int32 a = InputNumber(0, 4, "Р’Р°С€ РІС‹Р±РѕСЂ: ");
 				switch (a)
 				{
 				case 1:
@@ -211,7 +211,7 @@ void main()
 					cout << endl;
 					PrintHeadStudents();
 					students.OutputScreen(students.GetVector(), OutputScreenStudent);
-					__int32 numb = InputNumber(0, students.size(), "Введите номер записи,которую хотите изменить (0 - если передумали): ");
+					__int32 numb = InputNumber(0, students.size(), "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°РїРёСЃРё,РєРѕС‚РѕСЂСѓСЋ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ (0 - РµСЃР»Рё РїРµСЂРµРґСѓРјР°Р»Рё): ");
 
 					Student elem;
 
@@ -228,7 +228,7 @@ void main()
 				{
 					PrintHeadStudents();
 					students.OutputScreen(students.GetVector(), OutputScreenStudent);
-					__int32 numb = InputNumber(0, students.size(), "Введите номер записи,которую хотите изменить (0 - если передумали): ");
+					__int32 numb = InputNumber(0, students.size(), "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°РїРёСЃРё,РєРѕС‚РѕСЂСѓСЋ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ (0 - РµСЃР»Рё РїРµСЂРµРґСѓРјР°Р»Рё): ");
 
 					if (numb != 0)
 						do
@@ -244,24 +244,24 @@ void main()
 							markstemp.Add(InputScreenStudentSession());
 							temp[numb - 1].setmarks(markstemp);
 							students.SetVector(temp)[numb - 1];
-						} while (InputNumber(0, 1, "\nХотите добавить запись? (1 - Да, 0 - Нет)\nВаш выбор: ") == 1);
+						} while (InputNumber(0, 1, "\nРҐРѕС‚РёС‚Рµ РґРѕР±Р°РІРёС‚СЊ Р·Р°РїРёСЃСЊ? (1 - Р”Р°, 0 - РќРµС‚)\nР’Р°С€ РІС‹Р±РѕСЂ: ") == 1);
 						break;
 				}
 				case 3:
 				{
-					//Вывод студентов для выбора
+					//Р’С‹РІРѕРґ СЃС‚СѓРґРµРЅС‚РѕРІ РґР»СЏ РІС‹Р±РѕСЂР°
 					PrintHeadStudents();
 					students.OutputScreen(students.GetVector(), OutputScreenStudent);
-					__int32 numb = InputNumber(0, students.size(), "Введите номер записи,которую хотите изменить (0 - если передумали): ");
+					__int32 numb = InputNumber(0, students.size(), "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°РїРёСЃРё,РєРѕС‚РѕСЂСѓСЋ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ (0 - РµСЃР»Рё РїРµСЂРµРґСѓРјР°Р»Рё): ");
 
-					//Вывод оценок выбранного студента для выбора
+					//Р’С‹РІРѕРґ РѕС†РµРЅРѕРє РІС‹Р±СЂР°РЅРЅРѕРіРѕ СЃС‚СѓРґРµРЅС‚Р° РґР»СЏ РІС‹Р±РѕСЂР°
 					if (numb != 0)
 					{
 						PrintHeadMarks();
 						students.GetVector()[numb - 1].getmarks().OutputScreen(students.GetVector()[numb - 1].getmarks().GetVector(), OutputScreenStudentSession);
 					}
 
-					__int32 numb_mark = InputNumber(0, students.size(), "Введите номер записи с оценкой,которую хотите изменить (0 - если передумали): ");
+					__int32 numb_mark = InputNumber(0, students.size(), "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°РїРёСЃРё СЃ РѕС†РµРЅРєРѕР№,РєРѕС‚РѕСЂСѓСЋ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ (0 - РµСЃР»Рё РїРµСЂРµРґСѓРјР°Р»Рё): ");
 					StudentSession elem;
 
 					if (numb_mark != 0)
@@ -285,7 +285,7 @@ void main()
 				{
 					PrintHeadStudents();
 					students.OutputScreen(students.GetVector(), OutputScreenStudent);
-					__int32 numb = InputNumber(0, students.size(), "Введите номер записи со студентом,которую хотите изменить (0 - если передумали): ");
+					__int32 numb = InputNumber(0, students.size(), "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°РїРёСЃРё СЃРѕ СЃС‚СѓРґРµРЅС‚РѕРј,РєРѕС‚РѕСЂСѓСЋ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ (0 - РµСЃР»Рё РїРµСЂРµРґСѓРјР°Р»Рё): ");
 
 					if (numb != 0) {
 						PrintHeadMarks();
@@ -295,7 +295,7 @@ void main()
 					Task<StudentSession> markstemp;
 					temp = students.GetVector();
 					markstemp = temp[numb - 1].getmarks();
-					markstemp.Remove(InputNumber(0, students.GetVector()[numb - 1].getmarks().size(), "Введите номер записи с оценкой,которую хотите удалить (0 - если передумали): "));
+					markstemp.Remove(InputNumber(0, students.GetVector()[numb - 1].getmarks().size(), "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°РїРёСЃРё СЃ РѕС†РµРЅРєРѕР№,РєРѕС‚РѕСЂСѓСЋ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ (0 - РµСЃР»Рё РїРµСЂРµРґСѓРјР°Р»Рё): "));
 					temp[numb - 1].setmarks(markstemp);
 					students.SetVector(temp)[numb - 1];
 					/*!*/			//students.SetVector()[numb - 1].marks.Remove(InputNumber(0, students.GetVector()[numb - 1].marks.size(), "Enter the number of the mark to remove (0 - if you change your mind to delete): "));
@@ -312,7 +312,7 @@ void main()
 			{
 				PrintHeadStudents();
 				students.OutputScreen(students.GetVector(), OutputScreenStudent);
-				students.Remove(InputNumber(0, students.size(), "Введите номер записи со студентом,которую хотите удалить (0 - если передумали): "));
+				students.Remove(InputNumber(0, students.size(), "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°РїРёСЃРё СЃРѕ СЃС‚СѓРґРµРЅС‚РѕРј,РєРѕС‚РѕСЂСѓСЋ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ (0 - РµСЃР»Рё РїРµСЂРµРґСѓРјР°Р»Рё): "));
 				break;
 			}
 			case 4:
@@ -320,7 +320,7 @@ void main()
 				Student elem;
 				vector<Student> subset;
 				Student search_elem;
-				__int32 numb = InputNumber(1, 4, "Выберите тип поиска:\n 1 - по группе\n 2 - по курсу\n 3 - по номеру зачётки\n 4 - по фамилии\n\nВаш выбор: ");
+				__int32 numb = InputNumber(1, 4, "Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РїРѕРёСЃРєР°:\n 1 - РїРѕ РіСЂСѓРїРїРµ\n 2 - РїРѕ РєСѓСЂСЃСѓ\n 3 - РїРѕ РЅРѕРјРµСЂСѓ Р·Р°С‡С‘С‚РєРё\n 4 - РїРѕ С„Р°РјРёР»РёРё\n\nР’Р°С€ РІС‹Р±РѕСЂ: ");
 				search_elem = InputChangeTypeSearchStudent(numb);
 				subset = students.LineSearch(search_elem, SearchElement, numb);
 				if (subset.size() != 0)
@@ -335,7 +335,7 @@ void main()
 					}
 				}
 				else
-					cout << "Записи не найдены" << endl;
+					cout << "Р—Р°РїРёСЃРё РЅРµ РЅР°Р№РґРµРЅС‹" << endl;
 				break;
 			}
 			case 5:
