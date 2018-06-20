@@ -20,9 +20,13 @@
 	StudentSession StudentSession::ChangeStudentSession(StudentSession &result)
 	{
 		if (InputNumber(0, 1, "Хотите ли вы изменить предмет " + result.subject + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
+		{
 			result.subject = InputInformation("Введите предмет: ");
+		}
 		if (InputNumber(0, 1, "Хотите ли вы изменить оценку " + to_string(result.mark) + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
-			result.mark = InputNumber(2,5,"Введите оценку: ");
+		{
+			result.mark = InputNumber(2, 5, "Введите оценку: ");
+		}
 
 		return result;
 	}
@@ -35,14 +39,17 @@
 
 		return (*this);
 	}
-
-	void StudentSession::StudentSessionToFile(fstream *file) {
+	//загрузка результатов сессии из файла
+	void StudentSession::StudentSessionToFile(fstream *file)
+	{
 		StrToBin(file, this->subject);
 		file->write(reinterpret_cast<char*>(&(this->mark)), sizeof(this->mark));
 	}
-
-StudentSession StudentSessionFromFile(fstream *file, bool &ok) {
+//получение результатов сессии из файла
+StudentSession StudentSessionFromFile(fstream *file, bool &ok)
+{
 	StudentSession st_ex;
+
 	st_ex.subject = StrFromBin(file);
 	ok = (bool)file->read(reinterpret_cast<char*>(&(st_ex.mark)), sizeof(st_ex.mark));
 
@@ -63,22 +70,19 @@ StudentSession InputScreenStudentSession()
 //Функция вывода структуры Student на консоль
 void OutputScreenStudentSession(StudentSession st)
 {
-	
 	cout << setw(1) << left << "|" << setw(20) << left << st.subject << "|" << setw(36) << left << st.mark << "|";
 }
-//cout << setw(1) << "|" << setw(10) << left << st.course << "|" << setw(10) << left << st.group << "|" << setw(20) << left << st.surname << "|" << setw(25) << left << st.numberRecordBook << "|";
 //Перевод структуры Student в строку
 string ToString(StudentSession st, __int32 i)
 {
 	string result = "Запись - " + to_string(i) + "\n" + "Предмет: " + st.subject + "\n" + "Оценка: " + to_string(st.mark) + "\n";
+
 	return result;
 }
 
 bool IsEqual(StudentSession st1, StudentSession st2)
 {
-	return 
-		((st1.subject == st2.subject) &&
-		(st1.mark == st2.mark));
+	return ((st1.subject == st2.subject) && (st1.mark == st2.mark));
 }
 
 //считывание структуры Student из строки
@@ -86,6 +90,7 @@ StudentSession ReadFromString(ifstream& input)
 {
 	StudentSession result;
 	string s;
+
 	try
 	{
 		if (!input.eof())
@@ -105,5 +110,6 @@ StudentSession ReadFromString(ifstream& input)
 	{
 		cout << "Ошибка записи в файл" << endl;
 	}
+
 	return result;
 }

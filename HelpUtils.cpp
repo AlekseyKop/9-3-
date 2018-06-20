@@ -17,6 +17,7 @@ using namespace std;
 string InputInformation(string message)
 {
 	string a;
+
 	cout << message;
 	getline(cin,a);
 	while(a == "")
@@ -24,6 +25,7 @@ string InputInformation(string message)
 		cout << "Ошибка!!!!" << endl;
 		getline(cin, a);
 	}
+
 	return a;
 }
 
@@ -31,20 +33,24 @@ string InputInformation(string message)
 string StrFromBin(fstream *f) {
 	string result;
 	_int32 len;
-	if (!f->read(reinterpret_cast<char*>(&len), sizeof(len))) {
+	if (!f->read(reinterpret_cast<char*>(&len), sizeof(len))) 
+	{
 		return "";
 	}
 	char *buf = new char[len];
-	if (!f->read(buf, len)) {
+	if (!f->read(buf, len))
+	{
 		return "";
 	}
 	result = buf;
 	delete[] buf;
+
 	return result;
 }
 
 //запись строки в бинарный файл
-void StrToBin(fstream *f, string str) {
+void StrToBin(fstream *f, string str) 
+{
 	_int32 len = str.length() + 1;
 	f->write(reinterpret_cast<char*>(&len), sizeof(len));
 	f->write(str.c_str(), len);

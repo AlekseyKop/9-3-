@@ -24,13 +24,21 @@
 	Student Student::ChangeStudent(Student &result)
 	{
 		if (InputNumber(0, 1, "Хотите поменять курс " + to_string(result.course) + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
+		{
 			result.course = InputNumber(1, 6, "Введите новый курс: ");
+		}
 		if (InputNumber(0, 1, "Хотите поменять группу " + result.group + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
+		{
 			result.group = InputInformation("Введите новую группу: ");
+		}
 		if (InputNumber(0, 1, "Хотите поменять фамилию " + result.surname + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
+		{
 			result.surname = InputInformation("Введите новую фамилию: ");
+		}
 		if (InputNumber(0, 1, "Хотите поменять номер зачётки " + result.numberRecordBook + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
+		{
 			result.numberRecordBook = InputInformation("Введите новый номер: ");
+		}
 
 		return result;
 	}
@@ -38,21 +46,26 @@
 	bool Student::operator == (Student st)
 	{
 		return ((course == st.getcourse()) &&
-			(group == st.getgroup()) &&
-			(surname == st.getsurname()) &&
-			(numberRecordBook == st.getnumberRecordBook()));
+			     (group == st.getgroup()) &&
+			   (surname == st.getsurname()) &&
+	  (numberRecordBook == st.getnumberRecordBook()));
 	}
 
-	void Student::StudentToFile(fstream *file) {
+	//загрузка данных о студенте в файл
+	void Student::StudentToFile(fstream *file)
+	{
 		file->write(reinterpret_cast<char*>(&(this->course)), sizeof(this->course));
 		StrToBin(file, this->group);
 		StrToBin(file, this->surname);
 		StrToBin(file, this->numberRecordBook);
 	}
 
-Student StudentFromFile(fstream *file, bool &ok) {
+//загрузка данных о студенте из файла
+Student StudentFromFile(fstream *file, bool &ok) 
+{
 	Student st;
 	__int32 temp;
+
 	ok = (bool)file->read(reinterpret_cast<char*>(&(temp)), sizeof(temp));
 	if (ok)
 	{
@@ -88,15 +101,16 @@ void OutputScreenStudent(Student st)
 string ToString(Student st, __int32 i)
 {
 	string result = "Запись - " + to_string(i) + "\n" + "Курс: " + to_string(st.getcourse()) + "\n" + "Группа: " + st.getgroup() + "\n" + "Фамилия: " + st.getsurname() + "\n" + "Номер зачётки: " + st.getnumberRecordBook() + "\n";
+
 	return result;
 }
-
+//Сравнивание записей
 bool IsEqual(Student st1, Student st2)
 {
 	return ((st1.getcourse() == st2.getcourse()) &&
-		(st1.getgroup() == st2.getgroup()) &&
-		(st1.getsurname() == st2.getsurname()) &&
-		(st1.getnumberRecordBook() == st2.getnumberRecordBook()));
+		     (st1.getgroup() == st2.getgroup()) &&
+		   (st1.getsurname() == st2.getsurname()) &&
+  (st1.getnumberRecordBook() == st2.getnumberRecordBook()));
 }
 
 //считывание структуры Student из строки
@@ -104,6 +118,7 @@ Student ReadFromStringSudent(ifstream& input)
 {
 	Student result;
 	string s;
+
 	try
 	{
 		if (!input.eof())
@@ -152,16 +167,26 @@ bool SearchElement(Student a, Student b, __int32 type_search)
 {
 	switch (type_search)
 	{
-	case 1:
-		return (a.getgroup() == b.getgroup());
-	case 2:
-		return (a.getcourse() == b.getcourse());
-	case 3:
-		return (a.getnumberRecordBook() == b.getnumberRecordBook());
-	case 4:
-		return (a.getsurname() == b.getsurname());
-	default:
-		return false;
+		case 1:
+		{
+			return (a.getgroup() == b.getgroup());
+		}
+		case 2:
+		{
+			return (a.getcourse() == b.getcourse());
+		}
+		case 3:
+		{
+			return (a.getnumberRecordBook() == b.getnumberRecordBook());
+		}
+		case 4:
+		{
+			return (a.getsurname() == b.getsurname());
+		}
+		default:
+		{
+			return false;
+		}
 	}
 }
 
@@ -174,22 +199,33 @@ type_search - тип поиска:
 Student InputChangeTypeSearchStudent(__int32 type_search)
 {
 	Student result;
+
 	switch (type_search)
 	{
-	case 1:
-		result.setgroup(InputInformation("Введите группу: "));
-		return result;
-	case 2:
-		result.setcourse(InputNumber(1, 6, "Введите курс: "));
-		return result;
-	case 3:
-		result.setnumberRecordBook(InputInformation("Введите номер зачётки: "));
-		return result;
-	case 4:
-		result.setsurname(InputInformation("Введите фамилию: "));
-		return result;
-	default:
-		return result;
+		case 1:
+		{
+			result.setgroup(InputInformation("Введите группу: "));
+			return result;
+		}
+		case 2:
+		{
+			result.setcourse(InputNumber(1, 6, "Введите курс: "));
+			return result;
+		}
+		case 3:
+		{
+			result.setnumberRecordBook(InputInformation("Введите номер зачётки: "));
+			return result;
+		}
+		case 4:
+		{
+			result.setsurname(InputInformation("Введите фамилию: "));
+			return result;
+		}
+		default:
+		{
+			return result;
+		}
 	}
 }
 
@@ -203,39 +239,91 @@ __int32 Sorte(Student a, Student b, __int32 type_search)
 {
 	switch (type_search)
 	{
-	case 1:
-		if (a.getgroup() > b.getgroup()) return 1;
-		else if (a.getgroup() < b.getgroup()) return -1;
-		else return 0;
-	case 2:
-		if (a.getcourse() > b.getcourse()) return 1;
-		else if (a.getcourse() < b.getcourse()) return -1;
-		else return 0;
-	case 3:
-		if (a.getnumberRecordBook() > b.getnumberRecordBook()) return 1;
-		else if (a.getnumberRecordBook() < b.getnumberRecordBook()) return -1;
-		else return 0;
-	case 4:
-		if (a.getsurname() > b.getsurname()) return 1;
-		else if (a.getsurname() < b.getsurname()) return -1;
-		else return 0;
-	default:
-		return -2;
+		case 1:
+		{
+			if (a.getgroup() > b.getgroup())
+			{
+				return 1;
+			}
+			else if (a.getgroup() < b.getgroup())
+			{
+				return -1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		case 2:
+		{
+			if (a.getcourse() > b.getcourse()) 
+			{ 
+				return 1; 
+			}
+			else if (a.getcourse() < b.getcourse())
+			{
+				return -1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		case 3:
+		{
+			if (a.getnumberRecordBook() > b.getnumberRecordBook())
+			{
+				return 1;
+			}
+			else if (a.getnumberRecordBook() < b.getnumberRecordBook())
+			{
+				return -1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		case 4:
+		{
+			if (a.getsurname() > b.getsurname())
+			{
+				return 1;
+			}
+			else if (a.getsurname() < b.getsurname())
+			{
+				return -1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		default:
+		{
+			return -2;
+		}
 	}
 }
-
+//подсчёт средней успеваемости
 double AverageScope(Student st)
 {
 	double res = 0;
 	__int32 count = 0;
-	for (__int32 i = 0; i < st.getmarks().size(); i++)
+
+	for (__int32 i = 0; i < st.getmarks().Size(); i++)
 	{
 		res += st.getmarks().GetVector()[i].mark;
 		count++;
 	}
-	if (count == 0) return 0;
+	if (count == 0)
+	{
+		return 0;
+	}
 	else
+	{
 		return res / count;
+	}
 }
 
 

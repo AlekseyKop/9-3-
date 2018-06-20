@@ -9,7 +9,9 @@
 
 class StudentSession {
 public:
+	//предмет
 	string subject;
+	//оценка
 	__int32 mark;
 
 	//Конструктор по умолчанию
@@ -20,10 +22,10 @@ public:
 
 	//Перегруженный оператор присваивания для структуры Student
 	StudentSession& operator = (StudentSession s);
-
+	//загрузка результатов сессии из файла
 	void StudentSessionToFile(fstream *file);
 };
-
+//получение результатов сессии из файла
 StudentSession StudentSessionFromFile(fstream *file, bool &ok);
 
 //Функция ввода структуры Student с консоли

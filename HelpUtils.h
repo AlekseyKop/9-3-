@@ -17,6 +17,7 @@ template <class Type>
 Type InputNumber(Type min, Type max, string message)
 {
 	Type n;
+
 	do
 	{
 		cout << message;
@@ -28,6 +29,7 @@ Type InputNumber(Type min, Type max, string message)
 			cin.ignore(100, '\n');
 		} 
 	} while ((n < min) || (n > max));
+
 	return n;
 }
 
@@ -41,7 +43,6 @@ string StrFromBin(fstream *f);
 void StrToBin(fstream *f, string str);
 
 //вывод в таблицу
-
 void PrintHeadStudents();
 
 void PrintHeadMarks();

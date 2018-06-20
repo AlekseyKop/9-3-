@@ -16,6 +16,7 @@ private:
 	Task<StudentSession> marks;
 public:
 	//геттеры и сеттеры для полей
+	/////////////////////////////
 	__int32 getcourse()
 	{
 		return course;
@@ -63,6 +64,8 @@ public:
 	{
 		return marks = value;
 	}
+	//////////////////////////////
+
 	//Конструктор по умолчанию
 	Student();
 
@@ -71,9 +74,10 @@ public:
 
 	bool operator == (Student st);
 
+	//загрузка данных о студенте в файл
 	void StudentToFile(fstream *file);
 };
-
+//загрузка данных о студенте из файл
 Student StudentFromFile(fstream *file, bool &ok);
 
 //Функция ввода структуры Student с консоли
@@ -84,7 +88,7 @@ void OutputScreenStudent(Student st);
 
 //Перевод структуры Student в строку
 string ToString(Student st, __int32 i);
-
+//Сравнивание записей
 bool IsEqual(Student st1, Student st2);
 
 //считывание структуры Student из строки

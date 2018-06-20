@@ -14,6 +14,7 @@ template <class Type>
 class Task {
 	
 private:
+
 	vector<Type> vect; //контейнер
 
 	//Сортировка по заданному критерию, Compare - функция, сравнивающая два элемента  
@@ -21,6 +22,7 @@ private:
 	{
 		__int32 i, j, step;
 		Type tmp;
+
 		for (step = n / 2; step > 0; step /= 2)
 			for (i = step; i < n; i++)
 			{
@@ -28,9 +30,13 @@ private:
 				for (j = i; j >= step; j -= step)
 				{
 					if ((Compare(tmp, vect[j - step], type_search) == -1))
+					{
 						vect[j] = vect[j - step];
+					}
 					else
+					{
 						break;
+					}
 				}
 				vect[j] = tmp;
 			}
@@ -40,19 +46,28 @@ private:
 	__int32 BinarySearchElement(__int32 left, __int32 right, __int32 type_search, Type d, int(*Compare)(Type, Type, int))
 	{
 		__int32 mid = 0;
+
 		while (1)
 		{
 			mid = (left + right) / 2;
 
 			if (Compare(d, vect[mid], type_search) == -1)
-				right = mid - 1;				
-			else if (Compare(d, vect[mid], type_search) == 1) 
-				left = mid + 1;					
-			else                      
-				return mid;          
+			{
+				right = mid - 1;
+			}
+			else if (Compare(d, vect[mid], type_search) == 1)
+			{
+				left = mid + 1;
+			}
+			else
+			{
+				return mid;
+			}
 
 			if (left > right)
+			{
 				return -1;
+			}
 		}
 	}
 public:
@@ -65,13 +80,16 @@ public:
 	vector<Type> SetVector(vector<Type> value)
 	{
 		vect = value;
+
 		return vect;
 	}
 	//Удаление элемента
 	void Remove(__int32 numb)
 	{
 		if (numb != 0)
+		{
 			vect.erase(vect.begin() + numb - 1);
+		}
 	}
 
 	//Добавление элемента
@@ -99,7 +117,7 @@ public:
 	}
 
 	//Размер вектора
-	__int32 size()
+	__int32 Size()
 	{
 		return vect.size();
 	}
@@ -107,7 +125,7 @@ public:
 	//Проверка на пустоту
 	bool Is_empty()
 	{
-		return (vect.size() == 0);
+		return (vect.Size() == 0);
 	}
 
 	//Вывод в файл, f - функция, записывающая одну структуру в файл  
@@ -115,6 +133,7 @@ public:
 	{
 		string newfname = InputFileName();
 		ofstream fout(newfname);
+
 		if (fout)
 		{
 			vector<Type>::const_iterator pos;
@@ -138,6 +157,7 @@ public:
 	{
 		vector<Type>::const_iterator pos;
 		__int32 count = 1;
+
 		for (pos = items.begin(); pos != items.end(); ++pos)
 		{
 			cout << setw(1) << "|" << setw(10) << left << count;
@@ -146,7 +166,9 @@ public:
 			cout << endl;
 		}
 		if (items.empty())
+		{
 			cout << "Пусто" << endl;
+		}
 	}
 
 	//Ввод из файла, f - функция, которая считывает одну структуру из файла 
@@ -160,6 +182,7 @@ public:
 		if (!input)
 		{
 			cout << "Невозможно открыть файл" << endl;
+
 			return false;
 		}
 		else
@@ -168,9 +191,9 @@ public:
 			{
 				vect.push_back(f(input));
 			}
-			vect.erase(vect.begin() + vect.size() - 1);
-
+			vect.erase(vect.begin() + vect.Size() - 1);
 			input.close();
+
 			return true;
 		}
 	}
@@ -194,7 +217,9 @@ public:
 		for (auto iter = vect.begin(); iter != vect.end(); iter++)
 		{
 			if (Equal(search_elem, *iter, type_search))
+			{
 				NewVect.push_back(*iter);
+			}
 		}
 
 		return NewVect;
@@ -204,19 +229,24 @@ public:
 	vector<Type> BinarySearch(__int32 type_search, Type find_element, int(*Compare)(Type, Type, int), bool(*Equal)(Type, Type, int))
 	{
 		vector<Type> NewVect;
-		Sort(vect.size(), type_search, Compare);
+		Sort(vect.Size(), type_search, Compare);
 		__int32 left = 0;
-		__int32 right = vect.size();
+		__int32 right = vect.Size();
 		__int32 index;
 		if ((index = BinarySearchElement(left, right - 1, type_search, find_element, Compare)) != -1)
 		{
 			NewVect.push_back(vect[index]);
 			__int32 first_index = index;
-			while ((++index<right) && Equal(vect[index], find_element, type_search))
+			while ((++index < right) && Equal(vect[index], find_element, type_search))
+			{
 				NewVect.push_back(vect[index]);
+			}
 			while ((--first_index >= 0) && Equal(vect[first_index], find_element, type_search))
+			{
 				NewVect.push_back(vect[first_index]);
+			}
 		}
+
 		return NewVect;
 	}
 };
